@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+{% if user.is_authenticated %}
+
+<h2 style="display:inline-block; ">YOU ARE LOGGED IN AS </h2> <h1>{{user.username}}</h1>
+
+
+
+<form action="{% url 'logoutuser' %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">LOGOUT</button>
+</form>
+
+<button><a href="{% url 'addmovies' %}">Add Movies</a></button>
+<button><a href="#">Add Timings</a></button>
+<button><a href="#">Buy Tickets</a></button>
+
+<br>
+<br>
+<br>
+<h4>MOVIE LIST</h4>
+<ul>
+    {% for m in movie %}
+    <li>{{ m.name }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<button><a href="{% url 'loginuser' %}">LOGIN</a></button>
+<button><a href="{% url 'signupuser' %}">SIGNUP</a></button>
+{% endif %}

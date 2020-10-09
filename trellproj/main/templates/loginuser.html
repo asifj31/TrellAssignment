@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<h1>LOG IN</h1>
+
+<h2>{{ error }}</h2>
+
+<form method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit">Login</button>
+</form>
+<br>
+<h3>(Don't have an account? SIGNUP NOW)</h3>
+<button><a href="{% url 'signupuser' %}">SIGNUP</a></button>
